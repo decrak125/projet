@@ -1,8 +1,19 @@
-# sprint
-sprints for web dynamic course
-Pour le sprint 2 
-    -Annoter vos classes avec l'annotation AnnotationController 
-    -Annoter ensuite vos methodes avec l'annotation Get dans le package annotation  
-    -Creer votre repertoire test selon la structure imaginee
-    -Executer les scrip scriptFrame puis tesScript
-    N.B: Des modifications de path doivent etre accomplies dans les script en raison d'incompatibilite des chemins utilises
+Manuel d'utilisation du Framework WINTER MVC
+
+Installation et initialisation
+    - Prendre le fichier winter.jar et le mettre dans le lib du projet web
+    - Dans le fichier web.xml
+        Declarer un servlet de réception de toutes les requêtes, instance de la classe mg.itu.framework.controller.FrontController
+        (Son url pattern sera donc /)
+        Choisir un package dans lequel on mettra tous les controllers. Son nom sera stocké dans un init-param dont le nom est controllerspackage associé au FrontController
+
+Utilisation MVC
+    - Pour chaque classe qui sera un controller, ajouter l'annotation annotation.Controller
+    - Pour chaque méthode dans une classe controller qui sera associée à un URL, ajouter l'annotation annotaton.GET avec une url-pattern valide de la forme
+    "/**"
+    - Chaque méthode devra être annotée avec annotation.GET avec une valeur valide d'url-pattern
+    - Les méthodes devront retourner soit un String soit un ModelView
+
+    MODELVIEW
+        - Il s'agit d'un objet qu'on construit avec un URL qui représente la view et dans lequel on peut stocker des objets qui seront des attributs de requête.
+        - Utiliser la fonction addObject(key,value) pour ajouter un attribut à la requête qui sera utilisable dans le view
